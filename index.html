@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jota Digital · Carta de servicios</title>
+<meta name="description" content="Servicios digitales para tu negocio: código QR, sticker NFC, WhatsApp Business, Google Maps, Facebook, Instagram, página web, automatizaciones y bot. Precios fijos.">
+<meta name="theme-color" content="#070506">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jota Digital · Carta de servicios">
+<meta property="og:description" content="QR, NFC, WhatsApp Business, Google Maps, redes, web y automatizaciones para tu negocio. Precios fijos.">
+<meta property="og:image" content="https://jotareyyyyyyyyyyyy.github.io/jotadigital/img/compartir.jpg">
+<meta property="og:url" content="https://jotareyyyyyyyyyyyy.github.io/jotadigital/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/icono-64.png">
+<link rel="apple-touch-icon" href="img/icono-180.png">
+<link rel="preload" href="fuentes/saira.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/michroma.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Michroma";src:url(fuentes/michroma.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Saira";src:url(fuentes/saira.woff2) format("woff2");font-weight:300 800;font-stretch:75% 100%;font-display:swap}
+
+:root{
+  --negro:#070506;
+  --rojo:#e3162a;
+  --rojo-vivo:#ff4a5a;
+  --plata:#f2eeee;
+  --texto:#ece6e7;
+  --texto-2:#bcb1b4;
+  --texto-3:#a89ea1;
+  --linea:rgba(242,238,238,.12);
+  --cromo:linear-gradient(180deg,#ffffff 0%,#ebe6e7 28%,#8f878a 49%,#d6d0d2 63%,#faf7f7 80%,#a69ea1 100%);
+  --cromo-rojo:linear-gradient(180deg,#ffc2c6 0%,#ff4a5a 32%,#a3081a 52%,#ff3c4e 72%,#ffa3ab 100%);
+  --ease:cubic-bezier(.23,1,.32,1);
+  color-scheme:dark;
+  interpolate-size:allow-keywords;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--negro);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--texto);
+  font-family:"Saira",system-ui,sans-serif;font-stretch:100%;font-size:17px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(70% 560px at 50% -90px,rgba(227,22,42,.46),transparent 72%),
+    radial-gradient(42% 460px at 0% 58%,rgba(150,8,22,.22),transparent 70%),
+    radial-gradient(48% 540px at 100% 80%,rgba(227,22,42,.20),transparent 70%),
+    radial-gradient(80% 520px at 50% 100%,rgba(190,12,30,.34),transparent 72%),
+    var(--negro);
+}
+::selection{background:var(--rojo);color:#fff}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rojo-vivo);outline-offset:3px;border-radius:6px}
+html{scrollbar-color:#4a1c22 var(--negro)}
+
+#cielo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.capa{position:relative;z-index:1}
+
+/* cabecera */
+.cabecera{text-align:center;padding:clamp(44px,9vw,92px) 16px 8px}
+.emblema{position:relative;display:inline-block}
+.simbolo{display:block;width:clamp(96px,17vw,136px);height:auto;margin:0 auto;
+  filter:drop-shadow(0 20px 34px rgba(227,22,42,.5)) drop-shadow(0 2px 2px rgba(0,0,0,.8))}
+.marca{font-family:"Michroma",sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(1.55rem,6.4vw,3.2rem);letter-spacing:.14em;padding-left:.14em;line-height:1.15;
+  margin:22px 0 8px;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(0,0,0,.85)) drop-shadow(0 0 26px rgba(227,22,42,.4))}
+.lema{margin:0;color:var(--texto-2);font-size:clamp(1rem,2.6vw,1.15rem)}
+.contacto-corto{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:26px 0 0}
+@media (max-width:460px){
+  .contacto-corto{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:8px;max-width:400px;margin-inline:auto}
+  .contacto-corto .btn{justify-content:center;padding:0 8px;gap:7px;font-size:.96rem}
+}
+
+.btn{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 18px;border-radius:8px;
+  border:1px solid rgba(242,238,238,.24);color:var(--plata);text-decoration:none;
+  font-weight:600;font-stretch:92%;letter-spacing:.02em;font-size:1rem;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform 160ms var(--ease),border-color 200ms ease,background-color 200ms ease}
+.btn svg{width:19px;height:19px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-rojo{color:#fff;border-color:transparent;
+  background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 10px 26px -10px rgba(227,22,42,.95)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{border-color:rgba(242,238,238,.5)}
+  .btn-rojo:hover{background:linear-gradient(180deg,#ea3346 0%,#d01429 50%,#940817 100%)}
+}
+
+main{max-width:1180px;margin:0 auto;padding:0 16px 40px}
+.pista{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;color:var(--texto-3);font-size:.95rem;margin:44px 0 30px}
+.pista svg{width:15px;height:15px;fill:var(--rojo-vivo)}
+
+/* carta */
+.carta{display:grid;gap:52px}
+@media (min-width:900px){
+  .carta{grid-template-columns:1fr 1fr;gap:0}
+  .columna:first-child{padding-right:48px;border-right:1px solid;
+    border-image:linear-gradient(180deg,rgba(242,238,238,0),rgba(242,238,238,.28) 20%,rgba(242,238,238,.28) 80%,rgba(242,238,238,0)) 1}
+  .columna:last-child{padding-left:48px}
+}
+.titulo{font-family:"Michroma",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.08em;line-height:1.25;
+  font-size:clamp(1.08rem,2.7vw,1.4rem);margin:0;
+  background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.9))}
+.sub{margin:8px 0 14px;color:var(--texto-2)}
+
+.plato{border-bottom:1px solid var(--linea)}
+.plato summary{list-style:none;cursor:pointer;display:grid;
+  grid-template-columns:24px minmax(0,max-content) minmax(14px,1fr) auto 18px;column-gap:12px;align-items:last baseline;
+  padding:17px 10px 15px;margin:0 -10px;border-radius:8px;
+  transition:background-color 200ms ease}
+.plato summary::-webkit-details-marker{display:none}
+.ico{width:22px;height:22px;color:var(--texto-2);align-self:center;transition:color 200ms ease}
+.nombre{font-weight:650;font-stretch:86%;font-size:1.14rem;letter-spacing:.02em;text-transform:uppercase;color:var(--plata);line-height:1.25}
+.puntos{align-self:end;margin-bottom:.42em;border-bottom:2px dotted rgba(242,238,238,.3)}
+.precio{font-weight:700;font-stretch:90%;font-size:1.16rem;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--plata)}
+.precio small{font-weight:400;font-size:.8rem;color:var(--texto-3)}
+@media (max-width:560px){
+  .precio small{display:block;text-align:right;font-size:.74rem;line-height:1.1}
+}
+.mas{width:16px;height:16px;fill:none;stroke:var(--rojo-vivo);stroke-width:2.2;stroke-linecap:round;align-self:center;
+  transition:transform 280ms var(--ease)}
+.bajada{grid-column:2 / -1;color:var(--texto-2);font-size:.98rem;margin-top:3px}
+.plato[open] summary{background:linear-gradient(90deg,rgba(227,22,42,.2),rgba(227,22,42,0) 85%)}
+.plato[open] .ico{color:var(--rojo-vivo)}
+.plato[open] .mas{transform:rotate(45deg)}
+@media (hover:hover) and (pointer:fine){
+  .plato summary:hover{background-color:rgba(255,255,255,.045)}
+  .plato summary:hover .ico{color:var(--rojo-vivo)}
+}
+.plato::details-content{block-size:0;overflow:hidden;
+  transition:block-size 320ms var(--ease),content-visibility 320ms allow-discrete}
+.plato[open]::details-content{block-size:auto}
+.detalle{padding:6px 8px 22px 36px}
+.plato[open] .detalle{animation:aparece 360ms var(--ease) both}
+@keyframes aparece{from{opacity:0;transform:translateY(-6px)}}
+.incluye{margin:0 0 8px;color:var(--rojo-vivo);font-weight:600;font-size:.92rem}
+.detalle ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.detalle li{position:relative;padding-left:22px}
+.detalle li::before{content:"";position:absolute;left:1px;top:.42em;width:11px;height:11px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath fill='%23ff4a5a' d='M20 0c1.2 11 4.4 16.6 20 20-15.6 3.4-18.8 9-20 20-1.2-11-4.4-16.6-20-20C15.6 16.6 18.8 11 20 0z'/%3E%3C/svg%3E") center/contain no-repeat}
+.nota{margin:14px 0 0;color:var(--texto-2);font-size:.93rem}
+.nota.fuerte{color:var(--plata);border:1px solid rgba(255,52,70,.5);background:rgba(227,22,42,.12);padding:10px 13px;border-radius:8px}
+.pedir{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--plata);font-weight:600;text-decoration:none;
+  padding-bottom:2px;border-bottom:1px solid var(--rojo-vivo);transition:color 200ms ease}
+@media (hover:hover) and (pointer:fine){.pedir:hover{color:#fff;border-bottom-color:#fff}}
+
+.dudas{margin-top:34px;padding:22px 0 0;border-top:1px solid var(--linea)}
+.dudas p{margin:0 0 14px;color:var(--texto-2)}
+.dudas strong{display:block;color:var(--plata);font-size:1.12rem;font-weight:650;font-stretch:90%;margin-bottom:4px}
+
+/* packs */
+.packs{margin-top:110px;text-align:center}
+.packs .titulo{font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:.1em;padding-left:.1em}
+.packs > .sub{margin-bottom:8px}
+.canastas{display:grid;grid-template-columns:1fr;gap:40px 22px;margin-top:30px;align-items:start}
+@media (min-width:620px){.canastas{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.canastas{grid-template-columns:repeat(4,1fr)}}
+.pack summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;padding:0 6px 6px;border-radius:12px}
+.pack summary::-webkit-details-marker{display:none}
+.canasta{position:relative;display:block;width:min(100%,250px);aspect-ratio:1;isolation:isolate}
+.canasta::before{content:"";position:absolute;inset:16% 10% 4%;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(227,22,42,.7),rgba(227,22,42,0));filter:blur(22px);opacity:.75;
+  transition:opacity 320ms ease}
+.canasta img{display:block;width:100%;height:auto;filter:drop-shadow(0 26px 28px rgba(0,0,0,.75));
+  transition:transform 320ms var(--ease)}
+.destello{position:absolute;width:30px;height:30px;right:8%;top:4%;fill:#fff;z-index:2;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,.9)) drop-shadow(0 0 14px rgba(255,52,70,.9));
+  animation:titila 2.8s ease-in-out infinite}
+@keyframes titila{0%,100%{transform:scale(.55) rotate(0deg);opacity:.45}50%{transform:scale(1) rotate(20deg);opacity:1}}
+@media (hover:hover) and (pointer:fine){
+  .pack summary:hover .canasta img{transform:translateY(-8px) scale(1.02)}
+  .pack summary:hover .canasta::before{opacity:1}
+}
+.pack[open] .canasta::before{opacity:1}
+.pack-nombre{font-family:"Michroma",sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:.94rem;white-space:nowrap;color:var(--plata);margin-top:10px}
+.pack-bajada{color:var(--texto-2);font-size:.96rem;margin-top:4px}
+@media (min-width:620px){.pack-bajada{min-height:3em}}
+.pack-precio{display:flex;gap:12px;align-items:baseline;margin-top:12px}
+.pack-precio s{color:var(--texto-3);font-size:1.02rem;text-decoration-thickness:1.5px;font-variant-numeric:tabular-nums}
+.pack-precio b{font-weight:800;font-stretch:88%;font-size:2.15rem;line-height:1;font-variant-numeric:tabular-nums;
+  background:var(--cromo-rojo);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(227,22,42,.5))}
+.ahorro{margin-top:9px;font-size:.88rem;font-weight:650;color:#fff;padding:3px 10px;border-radius:6px;
+  background:linear-gradient(180deg,#cf1a2f,#8a0715);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.ver{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--plata);font-weight:600;
+  padding-bottom:2px;border-bottom:1px solid rgba(255,52,70,.7)}
+.ver .mas{width:13px;height:13px}
+.pack[open] .ver .mas{transform:rotate(45deg)}
+
+.boleta{position:relative;margin:14px auto 0;max-width:330px;padding:20px 20px 34px;text-align:left;
+  background:linear-gradient(180deg,#1f1416 0%,#140d0e 100%);
+  box-shadow:0 22px 40px -18px rgba(0,0,0,.9);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x}
+.pack[open] .boleta{animation:imprime 520ms var(--ease) both}
+@keyframes imprime{from{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}to{clip-path:inset(0 0 0 0);transform:none}}
+.boleta-t{margin:0 0 12px;padding-bottom:10px;border-bottom:1px dashed rgba(242,238,238,.3);
+  font-family:"Michroma",sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--plata);text-align:center}
+.boleta ul{list-style:none;margin:0;padding:0 0 10px;border-bottom:1px dashed rgba(242,238,238,.3)}
+.boleta li,.fila{display:flex;align-items:baseline;gap:8px;margin:0;padding:4px 0;font-variant-numeric:tabular-nums;font-size:.97rem}
+.boleta i{flex:1;min-width:10px;border-bottom:1px dotted rgba(242,238,238,.32);transform:translateY(-4px)}
+.fila{color:var(--texto-2)}
+.fila:first-of-type{margin-top:8px}
+.fila.rojo{color:var(--rojo-vivo);font-weight:600}
+.fila.total{margin-top:8px;padding-top:10px;border-top:3px double rgba(242,238,238,.35);color:var(--plata);font-weight:800;font-size:1.2rem}
+.boleta .pedir{display:flex;justify-content:center;border:0;margin-top:18px;min-height:46px;border-radius:8px;color:#fff;
+  background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+
+/* cierre */
+.cierre{margin-top:120px;text-align:center}
+.cierre .titulo{font-size:clamp(1.2rem,5.4vw,3rem);letter-spacing:.08em;padding-left:.08em}
+.cierre > p{color:var(--texto-2);margin:12px auto 26px;max-width:42ch}
+.btn.grande{min-height:58px;padding:0 30px;font-size:1.12rem}
+.btn.grande svg{width:22px;height:22px}
+.datos{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;margin:26px 0 0;font-size:1.05rem}
+.datos a{display:inline-flex;align-items:center;gap:9px;color:var(--plata);text-decoration:none;
+  padding-bottom:2px;border-bottom:1px solid rgba(242,238,238,.25)}
+.datos svg{width:18px;height:18px;color:var(--rojo-vivo)}
+.firma{margin:56px 0 0;font-family:"Michroma",sans-serif;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-2)}
+.letra-chica{max-width:62ch;margin:12px auto 0;color:var(--texto-3);font-size:.84rem}
+
+/* botón flotante */
+.flota{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 12px 28px -8px rgba(227,22,42,.9),0 4px 10px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(12px) scale(.95);pointer-events:none;
+  transition:opacity 240ms var(--ease),transform 240ms var(--ease)}
+.flota svg{width:27px;height:27px}
+.flota.visible{opacity:1;transform:none;pointer-events:auto}
+.flota:active{transform:scale(.95)}
+
+/* entrada */
+@media (prefers-reduced-motion:no-preference){
+  .simbolo{animation:enciende 900ms var(--ease) both}
+  .marca{animation:sube 700ms 120ms var(--ease) both}
+  .lema,.contacto-corto{animation:sube 700ms 220ms var(--ease) both}
+}
+@keyframes enciende{from{opacity:0;transform:translateY(10px) scale(.96);filter:brightness(.3) drop-shadow(0 0 0 rgba(227,22,42,0))}}
+@keyframes sube{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){
+  .destello{animation:none;opacity:.9}
+  .plato::details-content{transition:none}
+  .pack[open] .boleta,.plato[open] .detalle{animation:none}
+}
+
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<canvas id="cielo" aria-hidden="true"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></g></symbol>
+  <symbol id="i-estrella" viewBox="0 0 40 40"><path d="M20 0c1.2 11 4.4 16.6 20 20-15.6 3.4-18.8 9-20 20-1.2-11-4.4-16.6-20-20C15.6 16.6 18.8 11 20 0z"/></symbol>
+</svg>
+
+<div class="capa">
+<header class="cabecera">
+  <span class="emblema"><img class="simbolo" src="img/simbolo.webp" width="400" height="736" alt="" fetchpriority="high"></span>
+  <h1 class="marca">Jota Digital</h1>
+  <p class="lema">Carta de servicios digitales para tu negocio</p>
+  <nav class="contacto-corto" aria-label="Contacto">
+    <a class="btn btn-rojo" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20quiero%20conversar." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    <a class="btn" href="tel:+56972989596"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+    <a class="btn" href="mailto:joagivg.tapiens@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Correo</a>
+  </nav>
+</header>
+
+<main>
+  <p class="pista"><svg aria-hidden="true"><use href="#i-estrella"/></svg>Toca un servicio para ver qué incluye</p>
+
+  <section class="carta" aria-label="Servicios">
+    <div class="columna">
+      <h2 class="titulo">Servicios básicos</h2>
+      <p class="sub">Para que te encuentren y te escriban.</p>
+      
+      <details class="plato" name="carta" id="qr">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2 2h8v8H2zM3.8 3.8v4.4h4.4V3.8zM4.9 4.9h2.2v2.2H4.9zM14 2h8v8h-8zm1.8 1.8v4.4h4.4V3.8zm1.1 1.1h2.2v2.2h-2.2zM2 14h8v8H2zm1.8 1.8v4.4h4.4v-4.4zm1.1 1.1h2.2v2.2H4.9zM12 12h3v3h-3zm3 3h3v3h-3zm3-3h4v3h-4zm-6 6h3v4h-3zm6 1h4v3h-4z"/></svg>
+          <span class="nombre">Código QR</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$8.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Un QR con tu logo que lleva a donde tú quieras.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Diseño con tu logo y tus colores.</li><li>Lleva a tu WhatsApp, tus reseñas, tu carta, tu Instagram o tu Wi-Fi.</li><li>Archivo listo para imprimir y versión para redes.</li><li>Un adhesivo impreso resistente al agua.</li><li>Lo probamos juntos antes de entregarlo.</li></ul>
+          
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20C%C3%B3digo%20QR." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="nfc">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M6.2 8.6a5 5 0 0 1 0 6.8"/><path d="M10 6.1a9 9 0 0 1 0 11.8"/><path d="M13.9 3.6a13 13 0 0 1 0 16.8"/><path d="M17.8 1.9a16 16 0 0 1 0 20.2"/></g><circle cx="2.8" cy="12" r="1.8"/></svg>
+          <span class="nombre">Sticker NFC</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$12.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Tu cliente acerca el celular y llega directo a dejarte una reseña.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Sticker NFC programado y pegado en tu local.</li><li>Lleva a tus reseñas de Google, a tu WhatsApp o a tu Instagram.</li><li>QR impreso de respaldo para celulares sin NFC.</li><li>Probado con Android y con iPhone.</li></ul>
+          
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Sticker%20NFC." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="whatsapp">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span class="nombre">WhatsApp Business</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$30.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Tu WhatsApp ordenado como el de una tienda grande.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Paso a WhatsApp Business sin perder tus chats.</li><li>Perfil con logo, horario, dirección y descripción.</li><li>Catálogo con hasta 15 productos o servicios.</li><li>Mensaje de bienvenida y mensaje de ausencia.</li><li>10 respuestas rápidas para lo que más te preguntan.</li><li>Etiquetas para ordenar a tus clientes.</li><li>Link y QR directo a tu chat.</li></ul>
+          
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20WhatsApp%20Business." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="maps">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></svg>
+          <span class="nombre">Google Maps</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$40.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Que tu negocio aparezca bien cuando te buscan.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Creo tu ficha de Google o recupero la que ya existe.</li><li>Dirección, horario, teléfono, categoría y servicios al día.</li><li>Hasta 10 fotos de tu local y tus productos.</li><li>Link directo para pedir reseñas.</li><li>Te acompaño en la verificación que pide Google.</li></ul>
+          <p class="nota">La verificación la aprueba Google y a veces tarda unos días.</p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Google%20Maps." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="facebook">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+          <span class="nombre">Facebook</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$25.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Una página de negocio completa y conectada.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Página creada o puesta al día.</li><li>Foto de perfil, portada, datos y horario.</li><li>Botón para que te escriban por WhatsApp.</li><li>Conectada con Instagram en Meta Business Suite.</li><li>3 publicaciones de inicio.</li></ul>
+          
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Facebook." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="instagram">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+          <span class="nombre">Instagram</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio">$30.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Un perfil que da ganas de comprarte.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Cuenta profesional configurada.</li><li>Biografía clara con link a tu WhatsApp.</li><li>Portadas para tus historias destacadas.</li><li>3 publicaciones base: quiénes somos, qué ofrecemos y cómo contactarnos.</li><li>Plantillas para que sigas publicando tú.</li></ul>
+          <p class="nota">No incluye manejo semanal de la cuenta.</p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Instagram." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+    </div>
+    <div class="columna">
+      <h2 class="titulo">Servicios avanzados</h2>
+      <p class="sub">Para que tu negocio trabaje solo.</p>
+      
+      <details class="plato" name="carta" id="web">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3.2 3h17.6c.9 0 1.7.8 1.7 1.7v14.6c0 .9-.8 1.7-1.7 1.7H3.2c-.9 0-1.7-.8-1.7-1.7V4.7c0-.9.8-1.7 1.7-1.7zm.3 5.5v10.5h17V8.5zM4.4 4.9h1.7v1.7H4.4zm2.9 0H9v1.7H7.3zM6 11h7v2H6zm0 3.5h11v2H6z"/></svg>
+          <span class="nombre">Página web</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio"><small>desde</small> $120.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Tu propia página, lista para compartir.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Una página adaptada a celular con tus servicios, fotos y ubicación.</li><li>Botón directo a tu WhatsApp.</li><li>La publico y te la dejo funcionando, sin mensualidad de alojamiento.</li><li>Una ronda de cambios incluida.</li></ul>
+          <p class="nota fuerte">No incluye el dominio (tunegocio.cl). Lo pagas tú directo: un .cl cuesta $9.990 al año en NIC Chile.</p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20P%C3%A1gina%20web." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="automatizacion">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M7.5 5.5h4.5a3 3 0 0 1 3 3v7a3 3 0 0 0 3 3h0"/><path d="M7.5 18.5h3.5"/></g><circle cx="4.6" cy="5.5" r="3"/><circle cx="19.4" cy="18.5" r="3"/><circle cx="4.6" cy="18.5" r="3"/><path d="M15.2 9.6 19 12l-3.8 2.4z"/></svg>
+          <span class="nombre">Automatización de procesos en línea</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio"><small>desde</small> $150.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Lo repetitivo se hace solo.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Reviso tu proceso y elijo qué conviene automatizar.</li><li>Por ejemplo: pedidos que se anotan solos en una planilla, avisos por correo o WhatsApp, recordatorios de horas.</li><li>Lo armo con n8n o Make y lo dejo probado.</li><li>Te explico cómo funciona y qué hacer si algo falla.</li></ul>
+          <p class="nota">Si la plataforma cobra licencia, la pagas tú directo.</p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Automatizaci%C3%B3n%20de%20procesos%20en%20l%C3%ADnea." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <details class="plato" name="carta" id="bot">
+        <summary>
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11 1.5h2v3.2h-2zM5.4 5.6h13.2c1.7 0 3 1.3 3 3v8.6c0 1.7-1.3 3-3 3H5.4c-1.7 0-3-1.3-3-3V8.6c0-1.7 1.3-3 3-3zm3.1 4.6a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zm7 0a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM8.6 15.6v1.8h6.8v-1.8z"/><path d="M0 10.5h1.6v5H0zm22.4 0H24v5h-1.6z"/></svg>
+          <span class="nombre">Bot acompañante</span>
+          <span class="puntos" aria-hidden="true"></span>
+          <span class="precio"><small>desde</small> $250.000</span>
+          <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+          <span class="bajada">Responde por ti a cualquier hora.</span>
+        </summary>
+        <div class="detalle">
+          <p class="incluye">Incluye</p>
+          <ul><li>Contesta lo de siempre: horario, precios, dirección y stock.</li><li>Funciona en WhatsApp, Instagram o tu página web.</li><li>Te pasa la conversación cuando hace falta una persona.</li><li>Aprende con la información de tu negocio.</li></ul>
+          <p class="nota">El costo por uso de Meta o de la inteligencia artificial se paga aparte, según cuánto se use.</p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20Bot%20acompa%C3%B1ante." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </details>
+      <div class="dudas">
+        <p><strong>¿No sabes por dónde partir?</strong>Cuéntame qué vende tu negocio y te recomiendo lo justo, sin cobrarte por la conversación.</p>
+        <a class="btn" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20quiero%20conversar." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir recomendación</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="packs" id="packs" aria-labelledby="t-packs">
+    <h2 class="titulo" id="t-packs">Packs</h2>
+    <p class="sub">Varios servicios juntos, a mejor precio. Toca una canasta para ver qué trae.</p>
+    <div class="canastas">
+      
+      <details class="pack" name="packs" id="encuentrame">
+        <summary>
+          <span class="canasta"><img src="img/canasta-1.webp" width="600" height="600" alt="Canasta con 3 servicios" loading="lazy" decoding="async"></span>
+          <span class="pack-nombre">Pack Encuéntrame</span>
+          <span class="pack-bajada">Te encuentran y te dejan reseñas.</span>
+          <span class="pack-precio"><s>$60.000</s><b>$50.000</b></span>
+          <span class="ahorro">Ahorras $10.000</span>
+          <span class="ver">Ver qué trae <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></span>
+        </summary>
+        <div class="boleta">
+          <p class="boleta-t">Pack Encuéntrame</p>
+          <ul><li><span>Código QR</span><i aria-hidden="true"></i><span>$8.000</span></li><li><span>Sticker NFC</span><i aria-hidden="true"></i><span>$12.000</span></li><li><span>Google Maps</span><i aria-hidden="true"></i><span>$40.000</span></li></ul>
+          <p class="fila"><span>Por separado</span><i aria-hidden="true"></i><span>$60.000</span></p>
+          <p class="fila rojo"><span>Descuento pack</span><i aria-hidden="true"></i><span>&minus;$10.000</span></p>
+          <p class="fila total"><span>Total</span><i aria-hidden="true"></i><span>$50.000</span></p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20el%20Pack%20Encu%C3%A9ntrame." target="_blank" rel="noopener">Pedir este pack</a>
+        </div>
+      </details>
+      <details class="pack" name="packs" id="local">
+        <summary>
+          <span class="canasta"><img src="img/canasta-2.webp" width="600" height="600" alt="Canasta con 4 servicios" loading="lazy" decoding="async"></span>
+          <span class="pack-nombre">Pack Local</span>
+          <span class="pack-bajada">Te encuentran y te escriben.</span>
+          <span class="pack-precio"><s>$90.000</s><b>$70.000</b></span>
+          <span class="ahorro">Ahorras $20.000</span>
+          <span class="ver">Ver qué trae <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></span>
+        </summary>
+        <div class="boleta">
+          <p class="boleta-t">Pack Local</p>
+          <ul><li><span>Código QR</span><i aria-hidden="true"></i><span>$8.000</span></li><li><span>Sticker NFC</span><i aria-hidden="true"></i><span>$12.000</span></li><li><span>Google Maps</span><i aria-hidden="true"></i><span>$40.000</span></li><li><span>WhatsApp Business</span><i aria-hidden="true"></i><span>$30.000</span></li></ul>
+          <p class="fila"><span>Por separado</span><i aria-hidden="true"></i><span>$90.000</span></p>
+          <p class="fila rojo"><span>Descuento pack</span><i aria-hidden="true"></i><span>&minus;$20.000</span></p>
+          <p class="fila total"><span>Total</span><i aria-hidden="true"></i><span>$70.000</span></p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20el%20Pack%20Local." target="_blank" rel="noopener">Pedir este pack</a>
+        </div>
+      </details>
+      <details class="pack" name="packs" id="full">
+        <summary>
+          <span class="canasta"><img src="img/canasta-3.webp" width="600" height="600" alt="Canasta con 6 servicios" loading="lazy" decoding="async"></span>
+          <span class="pack-nombre">Pack Full</span>
+          <span class="pack-bajada">Todo lo básico, de una vez.</span>
+          <span class="pack-precio"><s>$145.000</s><b>$110.000</b></span>
+          <span class="ahorro">Ahorras $35.000</span>
+          <span class="ver">Ver qué trae <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></span>
+        </summary>
+        <div class="boleta">
+          <p class="boleta-t">Pack Full</p>
+          <ul><li><span>Código QR</span><i aria-hidden="true"></i><span>$8.000</span></li><li><span>Sticker NFC</span><i aria-hidden="true"></i><span>$12.000</span></li><li><span>Google Maps</span><i aria-hidden="true"></i><span>$40.000</span></li><li><span>WhatsApp Business</span><i aria-hidden="true"></i><span>$30.000</span></li><li><span>Facebook</span><i aria-hidden="true"></i><span>$25.000</span></li><li><span>Instagram</span><i aria-hidden="true"></i><span>$30.000</span></li></ul>
+          <p class="fila"><span>Por separado</span><i aria-hidden="true"></i><span>$145.000</span></p>
+          <p class="fila rojo"><span>Descuento pack</span><i aria-hidden="true"></i><span>&minus;$35.000</span></p>
+          <p class="fila total"><span>Total</span><i aria-hidden="true"></i><span>$110.000</span></p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20el%20Pack%20Full." target="_blank" rel="noopener">Pedir este pack</a>
+        </div>
+      </details>
+      <details class="pack" name="packs" id="fullweb">
+        <summary>
+          <span class="canasta"><img src="img/canasta-4.webp" width="600" height="600" alt="Canasta con 7 servicios" loading="lazy" decoding="async"></span>
+          <span class="pack-nombre">Pack Full + Web</span>
+          <span class="pack-bajada">Todo lo básico y tu propia página.</span>
+          <span class="pack-precio"><s>$265.000</s><b>$210.000</b></span>
+          <span class="ahorro">Ahorras $55.000</span>
+          <span class="ver">Ver qué trae <svg class="mas" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></span>
+        </summary>
+        <div class="boleta">
+          <p class="boleta-t">Pack Full + Web</p>
+          <ul><li><span>Código QR</span><i aria-hidden="true"></i><span>$8.000</span></li><li><span>Sticker NFC</span><i aria-hidden="true"></i><span>$12.000</span></li><li><span>Google Maps</span><i aria-hidden="true"></i><span>$40.000</span></li><li><span>WhatsApp Business</span><i aria-hidden="true"></i><span>$30.000</span></li><li><span>Facebook</span><i aria-hidden="true"></i><span>$25.000</span></li><li><span>Instagram</span><i aria-hidden="true"></i><span>$30.000</span></li><li><span>Página web</span><i aria-hidden="true"></i><span>$120.000</span></li></ul>
+          <p class="fila"><span>Por separado</span><i aria-hidden="true"></i><span>$265.000</span></p>
+          <p class="fila rojo"><span>Descuento pack</span><i aria-hidden="true"></i><span>&minus;$55.000</span></p>
+          <p class="fila total"><span>Total</span><i aria-hidden="true"></i><span>$210.000</span></p>
+          <a class="pedir" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20me%20interesa%20el%20Pack%20Full%20%2B%20Web." target="_blank" rel="noopener">Pedir este pack</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="cierre" id="contacto" aria-labelledby="t-cierre">
+    <h2 class="titulo" id="t-cierre">¿Conversamos?</h2>
+    <p>Escríbeme y vemos qué necesita tu negocio.</p>
+    <a class="btn btn-rojo grande" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20quiero%20conversar." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+    <p class="datos">
+      <a href="tel:+56972989596"><svg aria-hidden="true"><use href="#i-tel"/></svg>+56 9 7298 9596</a>
+      <a href="mailto:joagivg.tapiens@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>joagivg.tapiens@gmail.com</a>
+    </p>
+    <p class="firma">Joaquín Tapia · Jota Digital · Santiago</p>
+    <p class="letra-chica">Precios en pesos chilenos, vigentes a octubre de 2026. Dominios, licencias y consumo de plataformas externas se pagan aparte, directo a cada proveedor.</p>
+  </section>
+</main>
+</div>
+
+<a class="flota" href="https://wa.me/56972989596?text=Hola%20Joaqu%C3%ADn%2C%20vi%20tu%20carta%20de%20Jota%20Digital%20y%20quiero%20conversar." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+// cielo de estrellas que titilan
+(() => {
+  const c = document.getElementById("cielo"), x = c.getContext("2d");
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w, h, estrellas = [];
+  function medir() {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight;
+    c.width = w * d; c.height = h * d;
+    x.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(w * h / 8500);
+    estrellas = Array.from({ length: n }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      r: Math.random() * 1.05 + .3, f: Math.random() * 6.28,
+      v: .35 + Math.random() * 1.1, rojo: Math.random() < .2
+    }));
+    if (quieto) pintar(0);
+  }
+  function pintar(t) {
+    x.clearRect(0, 0, w, h);
+    for (const s of estrellas) {
+      x.globalAlpha = quieto ? .55 : .25 + .7 * Math.abs(Math.sin(s.f + t / 1600 * s.v));
+      x.fillStyle = s.rojo ? "#ff6b78" : "#ffffff";
+      x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.2832); x.fill();
+    }
+    if (!quieto) requestAnimationFrame(pintar);
+  }
+  addEventListener("resize", medir);
+  medir();
+  if (!quieto) requestAnimationFrame(pintar);
+})();
+
+// botón flotante: aparece cuando ya no se ve la cabecera ni el cierre
+(() => {
+  const flota = document.querySelector(".flota");
+  const vistos = new Set();
+  const obs = new IntersectionObserver(es => {
+    for (const en of es) en.isIntersecting ? vistos.add(en.target) : vistos.delete(en.target);
+    flota.classList.toggle("visible", vistos.size === 0);
+  });
+  obs.observe(document.querySelector(".cabecera"));
+  obs.observe(document.querySelector(".cierre"));
+})();
+
+// al abrir una boleta en celular, que quede a la vista
+document.querySelectorAll(".pack").forEach(p => p.addEventListener("toggle", () => {
+  if (p.open && innerWidth < 620) setTimeout(() => p.querySelector(".boleta").scrollIntoView({ behavior: "smooth", block: "nearest" }), 120);
+}));
+</script>
+</body>
+</html>
