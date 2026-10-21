@@ -121,6 +121,7 @@ main{max-width:1180px;margin:0 auto;padding:0 16px 40px}
 .mas{width:16px;height:16px;fill:none;stroke:var(--rojo-vivo);stroke-width:2.2;stroke-linecap:round;align-self:center;
   transition:transform 280ms var(--ease)}
 .bajada{grid-column:2 / -1;color:var(--texto-2);font-size:.98rem;margin-top:3px}
+@media (max-width:560px){.plato summary{grid-template-columns:24px minmax(0,max-content) minmax(40px,1fr) auto 18px}}
 .plato[open] summary{background:linear-gradient(90deg,rgba(227,22,42,.2),rgba(227,22,42,0) 85%)}
 .plato[open] .ico{color:var(--rojo-vivo)}
 .plato[open] .mas{transform:rotate(45deg)}
@@ -154,7 +155,7 @@ main{max-width:1180px;margin:0 auto;padding:0 16px 40px}
 .packs .titulo{font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:.1em;padding-left:.1em}
 .packs > .sub{margin-bottom:8px}
 .canastas{display:grid;grid-template-columns:1fr;gap:40px 22px;margin-top:30px;align-items:start}
-@media (max-width:619px){.canastas{gap:30px}.canasta{width:190px}}
+@media (max-width:619px){.canastas{gap:30px}.canastas .canasta{width:190px}}
 @media (min-width:620px){.canastas{grid-template-columns:1fr 1fr}}
 @media (min-width:1100px){.canastas{grid-template-columns:repeat(4,1fr)}}
 .pack summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;padding:0 6px 6px;border-radius:12px}
