@@ -61,6 +61,13 @@ input:focus,textarea:focus,select:focus{border-color:var(--rojo-vivo);outline:no
   font:inherit;font-weight:600;color:#fff;background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%)}
 .miniaturas{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .miniaturas img{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--borde)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid var(--borde);border-radius:8px;background:var(--campo);cursor:pointer;font-weight:500}
+.chip input{accent-color:var(--rojo)}
+.chip:has(input:checked){border-color:var(--rojo-vivo);background:rgba(227,22,42,.14)}
+.colores{display:flex;gap:16px;margin-top:10px}
+.colores label{display:flex;align-items:center;gap:8px;font-weight:500;color:var(--texto-2);margin:0}
+.colores input{width:52px;height:40px;border:1px solid var(--borde);border-radius:6px;background:var(--campo);padding:2px}
 .paso-acceso{padding:14px;border:1px solid var(--borde);border-radius:8px;background:var(--campo);margin-top:10px}
 .paso-acceso h3{margin:0 0 6px;font-size:1.02rem;color:var(--plata);font-weight:700;font-stretch:92%}
 .paso-acceso p,.paso-acceso ol{margin:0 0 8px;color:var(--texto-2);font-size:.97rem}
@@ -152,8 +159,27 @@ input:focus,textarea:focus,select:focus{border-color:var(--rojo-vivo);outline:no
     <fieldset>
       <legend>Logo y fotos</legend>
       <p class="ayuda-bloque">Fotos reales: tu local por fuera y por dentro, tus productos, tu equipo. Se achican solas antes de enviarse.</p>
-      <div class="campo archivos"><label for="logo">Logo <span class="opcional">(si tienes)</span></label><input id="logo" type="file" accept="image/*"><div class="miniaturas" id="mini-logo"></div></div>
+      <div class="campo archivos"><label for="logo">Logo <span class="opcional">(si tienes)</span></label><input id="logo" type="file" accept="image/*,.pdf,.svg"><span class="ayuda">En la mejor calidad que tengas (PDF, SVG o PNG). Si solo tienes una foto del letrero, también sirve.</span><div class="miniaturas" id="mini-logo"></div></div>
       <div class="campo archivos"><label for="fotos">Fotos <span class="opcional">(hasta 10)</span></label><input id="fotos" type="file" accept="image/*" multiple><div class="miniaturas" id="mini-fotos"></div></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Tu estilo</legend>
+      <p class="ayuda-bloque">Con esto diseño a tu medida y no a mi gusto.</p>
+      <div class="campo"><span class="etiqueta">¿Cómo quieres que se sienta tu negocio? <span class="opcional">(hasta 3)</span></span>
+        <div class="chips" id="sensacion"></div></div>
+      <div class="campo"><span class="etiqueta">Colores de tu marca</span>
+        <label class="opcion"><input type="checkbox" id="sin_colores" checked> No tengo colores definidos: sáquenlos de mi logo</label>
+        <div class="colores oculto" id="colores"><label>Principal <input type="color" id="color1" value="#c51126"></label><label>Segundo <input type="color" id="color2" value="#111111"></label></div></div>
+      <div class="campo"><label for="referencias">Cuentas o marcas cuyo estilo te gusta <span class="opcional">(opcional)</span></label><input id="referencias" type="text" placeholder="@cuenta1, @cuenta2, una marca que admires…"></div>
+      <div class="campo"><label for="no_quiero">Lo que no quieres <span class="opcional">(opcional)</span></label><input id="no_quiero" type="text" placeholder="Colores, estilos o cosas que no te gustan"></div>
+      <div class="campo"><span class="etiqueta">¿Quieres aparecer tú o tu equipo en las fotos?</span>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="personas" value="si"> Sí</label>
+          <label class="opcion"><input type="radio" name="personas" value="no" checked> Solo el local y los productos</label>
+          <label class="opcion"><input type="radio" name="personas" value="da_igual"> Me da lo mismo</label>
+        </div></div>
+      <div class="campo oculto" id="bloque-sesion"><label for="sesion_horario">¿Qué días y horas te acomodan para la sesión de fotos?</label><input id="sesion_horario" type="text" placeholder="Martes o jueves en la mañana…"></div>
     </fieldset>
 
     <fieldset id="bloque-accesos">
@@ -185,7 +211,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--rojo-vivo);outline:no
 </main>
 
 <script>
-const CAT = {"basicos": [{"id": "nfc", "nombre": "Sticker NFC", "precio": 10000, "bajada": "Tu cliente acerca el celular y llega directo a dejarte una reseña o a escribirte.", "incluye": ["Sticker NFC programado y pegado en tu mesón o tu caja.", "Lleva a tus reseñas de Google, a tu WhatsApp o a tu Instagram.", "Probado con Android y con iPhone."]}, {"id": "whatsapp", "nombre": "WhatsApp Business", "precio": 35000, "bajada": "Tu WhatsApp ordenado como el de una tienda grande.", "incluye": ["Paso a WhatsApp Business sin perder tus chats.", "Perfil con logo, horario, dirección y descripción.", "Catálogo con hasta 15 productos o servicios.", "Mensaje de bienvenida y mensaje de ausencia.", "10 respuestas rápidas para lo que más te preguntan.", "Etiquetas para ordenar a tus clientes.", "Link y QR directo a tu chat."]}, {"id": "maps", "nombre": "Google Maps", "precio": 45000, "bajada": "Que tu negocio aparezca bien cuando te buscan.", "incluye": ["Creo tu ficha de Google o recupero la que ya existe.", "Dirección, horario, teléfono, categoría y servicios al día.", "Hasta 10 fotos de tu local y tus productos.", "Link directo para pedir reseñas.", "Te acompaño en la verificación que pide Google."], "nota": "La verificación la aprueba Google y a veces tarda unos días."}, {"id": "facebook", "nombre": "Facebook", "precio": 30000, "bajada": "Una página de negocio completa y conectada.", "incluye": ["Página creada o puesta al día.", "Foto de perfil, portada, datos y horario.", "Botón para que te escriban por WhatsApp.", "Conectada con Instagram en Meta Business Suite.", "3 publicaciones de inicio."]}, {"id": "instagram", "nombre": "Instagram", "precio": 35000, "bajada": "Un perfil que da ganas de comprarte.", "incluye": ["Cuenta profesional configurada.", "Biografía clara con link a tu WhatsApp.", "Portadas para tus historias destacadas.", "3 publicaciones base: quiénes somos, qué ofrecemos y cómo contactarnos.", "Plantillas para que sigas publicando tú."], "nota": "No incluye manejo semanal de la cuenta."}], "avanzados": [{"id": "web", "nombre": "Página web", "desde": true, "precio": 150000, "bajada": "Tu propia página, lista para compartir.", "incluye": ["Una página adaptada a celular con tus servicios, fotos y ubicación.", "Botón directo a tu WhatsApp.", "La publico y te la dejo funcionando, sin mensualidad de alojamiento.", "Una ronda de cambios incluida."], "nota": "No incluye el dominio (tunegocio.cl). Lo pagas tú directo: un .cl cuesta $9.990 al año en NIC Chile.", "notaFuerte": true}, {"id": "automatizacion", "nombre": "Automatización de procesos en línea", "desde": true, "precio": 150000, "bajada": "Lo repetitivo se hace solo.", "incluye": ["Reviso tu proceso y elijo qué conviene automatizar.", "Por ejemplo: pedidos que se anotan solos en una planilla, avisos por correo o WhatsApp, recordatorios de horas.", "Lo armo con n8n o Make y lo dejo probado.", "Te explico cómo funciona y qué hacer si algo falla."], "nota": "Si la plataforma cobra licencia, la pagas tú directo."}, {"id": "bot-informes", "nombre": "Bot de informes y avisos", "desde": true, "precio": 90000, "bajada": "Sin IA: te informa y te avisa solo, todos los días.", "incluye": ["Por ejemplo: el resumen de tus ventas del día, recordatorios de horas a tus clientes o un aviso cuando algo se está acabando.", "Toma los datos de tu planilla, tu caja o tu correo.", "Te llega por WhatsApp, Telegram o correo, a la hora que elijas.", "Queda funcionando en la nube, sin un computador prendido ni mensualidad de alojamiento."], "nota": "Gratis si te llega por Telegram o correo. Por WhatsApp, Meta cobra cerca de $20 por cada aviso."}, {"id": "bot", "nombre": "Bot con IA", "desde": true, "precio": 180000, "bajada": "Conversa con tus clientes por WhatsApp, a cualquier hora.", "incluye": ["Responde con la información de tu negocio: horario, precios, dirección, stock y cómo comprar.", "Te pasa la conversación cuando hace falta una persona.", "Usa la API oficial de WhatsApp, la vía que Meta permite para bots, con un número propio para el bot.", "Queda alojado en la nube, sin servidor en tu local ni mensualidad de alojamiento.", "Un mes de ajustes incluido."], "nota": "Gratis: el alojamiento y las primeras 1.000 respuestas de WhatsApp de cada mes. Sobre las 1.000, WhatsApp cobra cerca de $20 por respuesta. Si el bot usa ChatGPT o Claude, se suma un cargo aparte de $10.000 para la API."}], "packs": [{"id": "local", "nombre": "Pack Local", "bajada": "Te encuentran en Maps y te escriben por WhatsApp.", "trae": ["maps", "whatsapp"], "precio": 70000, "imagen": "pack-local"}, {"id": "redes", "nombre": "Pack Redes", "bajada": "Facebook e Instagram listos y conectados.", "trae": ["facebook", "instagram"], "precio": 55000, "imagen": "pack-redes"}, {"id": "full", "nombre": "Pack Full", "bajada": "Maps, WhatsApp, Facebook e Instagram, de una vez.", "trae": ["maps", "whatsapp", "facebook", "instagram"], "precio": 130000, "imagen": "pack-full"}, {"id": "fullweb", "nombre": "Pack Full + Web", "bajada": "Todo lo anterior y tu propia página.", "trae": ["maps", "whatsapp", "facebook", "instagram", "web"], "precio": 260000, "imagen": "pack-full-web"}], "whatsapp": "56972989596", "ficha": {"endpoint": "", "acceso_google": "joagivg.tapiens@gmail.com", "meta_socio_id": "", "drive_carpeta_id": "1CEqt1eE5equOHpFGkHbh1tO5v_eUXVK3"}};
+const CAT = {"basicos": [{"id": "nfc", "nombre": "Sticker NFC", "precio": 10000, "bajada": "Tu cliente acerca el celular y llega directo a dejarte una reseña o a escribirte.", "incluye": ["Sticker NFC programado y pegado en tu mesón o tu caja.", "Lleva a tus reseñas de Google, a tu WhatsApp o a tu Instagram.", "Probado con Android y con iPhone."]}, {"id": "whatsapp", "nombre": "WhatsApp Business", "precio": 35000, "bajada": "Tu WhatsApp ordenado como el de una tienda grande.", "incluye": ["Paso a WhatsApp Business sin perder tus chats.", "Perfil con logo, horario, dirección y descripción.", "Catálogo con hasta 15 productos o servicios.", "Mensaje de bienvenida y mensaje de ausencia.", "10 respuestas rápidas para lo que más te preguntan.", "Etiquetas para ordenar a tus clientes.", "Link y QR directo a tu chat."]}, {"id": "maps", "nombre": "Google Maps", "precio": 45000, "bajada": "Que tu negocio aparezca bien cuando te buscan.", "incluye": ["Creo tu ficha de Google o recupero la que ya existe.", "Dirección, horario, teléfono, categoría y servicios al día.", "Hasta 10 fotos de tu local y tus productos.", "Link directo para pedir reseñas.", "Te acompaño en la verificación que pide Google."], "nota": "La verificación la aprueba Google y a veces tarda unos días."}, {"id": "facebook", "nombre": "Facebook", "precio": 30000, "bajada": "Una página de negocio completa y conectada.", "incluye": ["Página creada o puesta al día.", "Diseño con tu logo y hasta 10 fotos tuyas, con retoque natural y una ronda de cambios.", "Foto de perfil, portada, datos y horario.", "Botón para que te escriban por WhatsApp.", "Conectada con Instagram en Meta Business Suite.", "3 publicaciones de inicio."], "nota": "Si te faltan buenas fotos, súmale la sesión de fotos."}, {"id": "instagram", "nombre": "Instagram", "precio": 35000, "bajada": "Un perfil que da ganas de comprarte.", "incluye": ["Cuenta profesional configurada.", "Diseño con tu logo y hasta 10 fotos tuyas, con retoque natural y una ronda de cambios.", "Biografía clara con link a tu WhatsApp.", "Portadas para tus historias destacadas.", "3 publicaciones base: quiénes somos, qué ofrecemos y cómo contactarnos.", "Plantillas para que sigas publicando tú."], "nota": "No incluye manejo semanal de la cuenta. Si te faltan buenas fotos, súmale la sesión de fotos."}, {"id": "fotos", "nombre": "Sesión de fotos", "precio": 40000, "precio_con_pack": 30000, "bajada": "Fotos reales de tu local, tus productos y tu equipo.", "incluye": ["Una hora de fotos en tu local.", "20 fotos editadas con luz y color naturales, sin inteligencia artificial.", "Versiones listas para Instagram, Facebook y Google Maps.", "Las fotos son tuyas para usarlas donde quieras.", "Entrega en 3 días hábiles."], "nota": "Con cualquier pack, la sesión queda en $30.000."}, {"id": "logo-vector", "nombre": "Logo en vector", "precio": 25000, "precio_con_pack": 20000, "bajada": "Tu logo nítido en cualquier tamaño, aunque hoy solo tengas una foto.", "incluye": ["Redibujo tu logo actual en vector, sin cambiar su diseño.", "Versiones en color, en blanco y en negro, con fondo transparente.", "Archivos para imprenta (PDF y SVG) y para redes (PNG).", "Una ronda de cambios."], "nota": "Con cualquier pack, queda en $20.000. No es un logo nuevo."}], "avanzados": [{"id": "web", "nombre": "Página web", "desde": true, "precio": 150000, "bajada": "Tu propia página, lista para compartir.", "incluye": ["Una página adaptada a celular con tus servicios, fotos y ubicación.", "Botón directo a tu WhatsApp.", "La publico y te la dejo funcionando, sin mensualidad de alojamiento.", "Una ronda de cambios incluida."], "nota": "No incluye el dominio (tunegocio.cl). Lo pagas tú directo: un .cl cuesta $9.990 al año en NIC Chile.", "notaFuerte": true}, {"id": "automatizacion", "nombre": "Automatización de procesos en línea", "desde": true, "precio": 150000, "bajada": "Lo repetitivo se hace solo.", "incluye": ["Reviso tu proceso y elijo qué conviene automatizar.", "Por ejemplo: pedidos que se anotan solos en una planilla, avisos por correo o WhatsApp, recordatorios de horas.", "Lo armo con n8n o Make y lo dejo probado.", "Te explico cómo funciona y qué hacer si algo falla."], "nota": "Si la plataforma cobra licencia, la pagas tú directo."}, {"id": "bot-informes", "nombre": "Bot de informes y avisos", "desde": true, "precio": 90000, "bajada": "Sin IA: te informa y te avisa solo, todos los días.", "incluye": ["Por ejemplo: el resumen de tus ventas del día, recordatorios de horas a tus clientes o un aviso cuando algo se está acabando.", "Toma los datos de tu planilla, tu caja o tu correo.", "Te llega por WhatsApp, Telegram o correo, a la hora que elijas.", "Queda funcionando en la nube, sin un computador prendido ni mensualidad de alojamiento."], "nota": "Gratis si te llega por Telegram o correo. Por WhatsApp, Meta cobra cerca de $20 por cada aviso."}, {"id": "bot", "nombre": "Bot con IA", "desde": true, "precio": 180000, "bajada": "Conversa con tus clientes por WhatsApp, a cualquier hora.", "incluye": ["Responde con la información de tu negocio: horario, precios, dirección, stock y cómo comprar.", "Te pasa la conversación cuando hace falta una persona.", "Usa la API oficial de WhatsApp, la vía que Meta permite para bots, con un número propio para el bot.", "Queda alojado en la nube, sin servidor en tu local ni mensualidad de alojamiento.", "Un mes de ajustes incluido."], "nota": "Gratis: el alojamiento y las primeras 1.000 respuestas de WhatsApp de cada mes. Sobre las 1.000, WhatsApp cobra cerca de $20 por respuesta. Si el bot usa ChatGPT o Claude, se suma un cargo aparte de $10.000 para la API."}], "packs": [{"id": "local", "nombre": "Pack Local", "bajada": "Te encuentran en Maps y te escriben por WhatsApp.", "trae": ["maps", "whatsapp"], "precio": 70000, "imagen": "pack-local"}, {"id": "redes", "nombre": "Pack Redes", "bajada": "Facebook e Instagram listos y conectados.", "trae": ["facebook", "instagram"], "precio": 55000, "imagen": "pack-redes"}, {"id": "full", "nombre": "Pack Full", "bajada": "Maps, WhatsApp, Facebook e Instagram, de una vez.", "trae": ["maps", "whatsapp", "facebook", "instagram"], "precio": 130000, "imagen": "pack-full"}, {"id": "fullweb", "nombre": "Pack Full + Web", "bajada": "Todo lo anterior y tu propia página.", "trae": ["maps", "whatsapp", "facebook", "instagram", "web"], "precio": 260000, "imagen": "pack-full-web"}], "whatsapp": "56972989596", "ficha": {"endpoint": "", "acceso_google": "joagivg.tapiens@gmail.com", "meta_socio_id": "", "drive_carpeta_id": "1CEqt1eE5equOHpFGkHbh1tO5v_eUXVK3"}};
 const $ = s => document.querySelector(s);
 const plata = n => "$" + n.toLocaleString("es-CL");
 const nombreServ = id => (CAT.basicos.concat(CAT.avanzados).find(s => s.id === id) || {}).nombre || id;
@@ -218,14 +244,14 @@ document.querySelectorAll("input[name=atencion]").forEach(r => r.addEventListene
 $("#packs").innerHTML = `<label class="opcion"><input type="radio" name="pack" value="" checked> Ninguno</label>` + CAT.packs.map(p =>
   `<label class="opcion"><input type="radio" name="pack" value="${p.id}"> <span>${p.nombre}<small>${p.trae.map(nombreServ).join(" + ")}</small></span><span class="precio">${plata(p.precio)}</span></label>`).join("");
 $("#servicios").innerHTML = CAT.basicos.concat(CAT.avanzados).map(s =>
-  `<label class="opcion" data-serv="${s.id}"><input type="checkbox" name="servicio" value="${s.id}"> <span>${s.nombre}</span><span class="precio">${s.desde ? "desde " : ""}${plata(s.precio)}</span></label>`).join("");
+  `<label class="opcion" data-serv="${s.id}"><input type="checkbox" name="servicio" value="${s.id}"> <span>${s.nombre}${s.precio_con_pack ? `<small>${plata(s.precio_con_pack)} con un pack</small>` : ""}</span><span class="precio">${s.desde ? "desde " : ""}${plata(s.precio)}</span></label>`).join("");
 
 function contrato() {
   const pack = CAT.packs.find(p => p.id === document.querySelector("input[name=pack]:checked").value) || null;
   const incluidos = pack ? pack.trae : [];
   const extra = [...document.querySelectorAll("input[name=servicio]:checked")].map(i => i.value).filter(id => !incluidos.includes(id));
   let total = pack ? pack.precio : 0, desde = false;
-  extra.forEach(id => { const s = CAT.basicos.concat(CAT.avanzados).find(x => x.id === id); total += s.precio; if (s.desde) desde = true; });
+  extra.forEach(id => { const s = CAT.basicos.concat(CAT.avanzados).find(x => x.id === id); total += (pack && s.precio_con_pack) ? s.precio_con_pack : s.precio; if (s.desde) desde = true; });
   return { pack: pack ? pack.id : null, pack_nombre: pack ? pack.nombre : null, servicios: incluidos.concat(extra), extra, total, desde };
 }
 function verContrato() {
@@ -237,6 +263,7 @@ function verContrato() {
   const c = contrato();
   $("#total").textContent = (c.desde ? "desde " : "") + plata(c.total);
   $("#bloque-nfc").classList.toggle("oculto", !c.servicios.includes("nfc"));
+  $("#bloque-sesion").classList.toggle("oculto", !c.servicios.includes("fotos"));
   verAccesos(c.servicios);
 }
 document.querySelectorAll("input[name=pack], input[name=servicio]").forEach(i => i.addEventListener("change", e => {
@@ -267,6 +294,14 @@ function verAccesos(servs) {
 }
 verContrato();
 
+// estilo: sensación (máximo 3), colores y horario de la sesión
+const SENSACIONES = ["Cercano","Elegante","Moderno","Tradicional","Divertido","Natural","Premium","Juvenil","Familiar","Técnico"];
+$("#sensacion").innerHTML = SENSACIONES.map(x => `<label class="chip"><input type="checkbox" name="sensacion" value="${x}"> ${x}</label>`).join("");
+document.querySelectorAll("input[name=sensacion]").forEach(cb => cb.addEventListener("change", () => {
+  if (document.querySelectorAll("input[name=sensacion]:checked").length > 3) cb.checked = false;
+}));
+$("#sin_colores").addEventListener("change", e => $("#colores").classList.toggle("oculto", e.target.checked));
+
 // archivos: se achican antes de enviar
 const archivos = { logo: [], fotos: [] };
 function achicar(file, max, tipo) {
@@ -281,9 +316,19 @@ function achicar(file, max, tipo) {
     img.onerror = () => mal(new Error("No pude leer " + file.name)); img.src = url;
   });
 }
+function crudo(file) {
+  return new Promise((ok, mal) => { const r = new FileReader();
+    r.onload = () => ok({ nombre: file.name, tipo: file.type || (/\.svg$/i.test(file.name) ? "image/svg+xml" : "application/pdf"), base64: String(r.result).split(",")[1] });
+    r.onerror = () => mal(new Error("No pude leer " + file.name)); r.readAsDataURL(file); });
+}
 async function cargar(input, clave, max, cuantos, mini) {
   const fs = [...input.files].slice(0, cuantos); archivos[clave] = []; $(mini).innerHTML = "";
   for (const f of fs) {
+    if (/\.(pdf|svg)$/i.test(f.name) || /pdf|svg/.test(f.type)) {
+      if (f.size > 8e6) { alert(f.name + " pesa más de 8 MB."); continue; }
+      const a = await crudo(f); archivos[clave].push(a);
+      $(mini).insertAdjacentHTML("beforeend", `<span class="ayuda">${f.name}</span>`); continue;
+    }
     const tipo = clave === "logo" && f.type === "image/png" ? "image/png" : "image/jpeg";
     try { const a = await achicar(f, max, tipo); archivos[clave].push(a);
       $(mini).insertAdjacentHTML("beforeend", `<img alt="" src="data:${a.tipo};base64,${a.base64}">`); } catch (e) { alert(e.message); }
@@ -334,6 +379,9 @@ function armarFicha() {
     contrato: { ...c, servicios_nombres: c.servicios.map(nombreServ), nfc_destino: c.servicios.includes("nfc") ? v("nfc_destino") : null },
     accesos: { google_invitado: !!document.querySelector("input[name=acceso_google]:checked"), meta_socio: !!document.querySelector("input[name=acceso_meta]:checked"), dominio_propio: sel("dominio") },
     autorizacion: { nombre: v("autoriza_nombre"), rut: v("autoriza_rut"), acepta: $("#autoriza").checked, texto: document.querySelector(".autorizacion p").textContent.trim() },
+    estilo: { sensacion: [...document.querySelectorAll("input[name=sensacion]:checked")].map(i => i.value),
+      colores: $("#sin_colores").checked ? null : [$("#color1").value, $("#color2").value],
+      referencias: v("referencias"), no_quiero: v("no_quiero"), personas: sel("personas"), sesion_horario: v("sesion_horario") },
     archivos: { logo: archivos.logo.map(a => a.nombre), fotos: archivos.fotos.map(a => a.nombre) }
   };
 }
@@ -346,6 +394,8 @@ function resumen(f) {
     `Horario: ${h}${f.negocio.horario_nota ? " (" + f.negocio.horario_nota + ")" : ""}`,
     `Instagram: ${f.negocio.instagram || "-"}`, `Facebook: ${f.negocio.facebook || "-"}`, `Web: ${f.negocio.web_actual || "-"}`, `En Google Maps: ${f.negocio.en_google}`,
     `Contrató: ${f.contrato.pack_nombre ? f.contrato.pack_nombre + " + " : ""}${f.contrato.extra.map(nombreServ).join(", ") || ""} — total ${f.contrato.desde ? "desde " : ""}${plata(f.contrato.total)}`,
+    `Estilo: ${f.estilo.sensacion.join(", ") || "-"} · colores: ${f.estilo.colores ? f.estilo.colores.join(" y ") : "del logo"}`,
+    `Le gusta: ${f.estilo.referencias || "-"} · no quiere: ${f.estilo.no_quiero || "-"} · personas en fotos: ${f.estilo.personas}${f.estilo.sesion_horario ? " · sesión: " + f.estilo.sesion_horario : ""}`,
     `Autoriza: ${f.autorizacion.nombre}, RUT ${f.autorizacion.rut}`, `Fotos: ${f.archivos.fotos.length}, logo: ${f.archivos.logo.length ? "sí" : "no"}`].join("\n");
 }
 
