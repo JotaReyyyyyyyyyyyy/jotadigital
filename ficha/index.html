@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ficha de tu negocio · Jota Digital</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070506">
+<link rel="icon" type="image/png" href="../img/icono-64.png">
+<link rel="preload" href="../fuentes/saira.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Michroma";src:url(../fuentes/michroma.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Saira";src:url(../fuentes/saira.woff2) format("woff2");font-weight:300 800;font-stretch:75% 100%;font-display:swap}
+:root{
+  --negro:#070506;--campo:#130d0e;--borde:rgba(242,238,238,.18);--borde-2:rgba(242,238,238,.32);
+  --rojo:#e3162a;--rojo-vivo:#ff4a5a;--plata:#f2eeee;--texto:#ece6e7;--texto-2:#bcb1b4;--texto-3:#a89ea1;
+  --ease:cubic-bezier(.23,1,.32,1);color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--negro);-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--texto);font-family:"Saira",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(80% 420px at 50% -60px,rgba(227,22,42,.4),transparent 72%),radial-gradient(70% 500px at 50% 100%,rgba(190,12,30,.22),transparent 72%),var(--negro)}
+::selection{background:var(--rojo);color:#fff}
+:focus-visible{outline:2px solid var(--rojo-vivo);outline-offset:2px}
+.hoja{max-width:640px;margin:0 auto;padding:28px 16px 80px}
+.cabecera{text-align:center;padding:12px 0 8px}
+.cabecera img{width:54px;height:auto;filter:drop-shadow(0 10px 20px rgba(227,22,42,.5))}
+h1{font-family:"Michroma",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(1.15rem,5vw,1.6rem);line-height:1.3;margin:14px 0 6px;
+  background:linear-gradient(180deg,#fff 0%,#ebe6e7 28%,#8f878a 49%,#d6d0d2 63%,#faf7f7 80%,#a69ea1 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro{color:var(--texto-2);margin:0 auto;max-width:44ch}
+fieldset{border:0;margin:40px 0 0;padding:0}
+legend{font-family:"Michroma",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;color:var(--plata);padding:0;margin-bottom:4px}
+.ayuda-bloque{color:var(--texto-3);font-size:.95rem;margin:0 0 14px}
+.campo{margin-top:16px}
+label,.etiqueta{display:block;font-weight:600;font-stretch:92%;color:var(--plata);margin-bottom:6px}
+.opcional{font-weight:400;color:var(--texto-3);font-size:.9rem}
+.ayuda{display:block;color:var(--texto-3);font-size:.9rem;margin-top:4px}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+  width:100%;min-height:48px;padding:11px 13px;border-radius:8px;border:1px solid var(--borde);background:var(--campo);color:var(--texto);
+  font:inherit;font-size:16px;transition:border-color 160ms ease}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--rojo-vivo);outline:none}
+.error input,.error textarea,.error select{border-color:#ff6b78}
+.msg-error{display:none;color:#ff8a94;font-size:.9rem;margin-top:5px}
+.error .msg-error{display:block}
+.opciones{display:grid;gap:8px}
+.opcion{display:flex;gap:11px;align-items:flex-start;padding:12px 13px;border:1px solid var(--borde);border-radius:8px;background:var(--campo);cursor:pointer;font-weight:500;color:var(--texto)}
+.opcion input{margin-top:4px;accent-color:var(--rojo);width:18px;height:18px;flex:none}
+.opcion .precio{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--plata)}
+.opcion small{display:block;color:var(--texto-3);font-weight:400}
+.opcion.incluido{opacity:.55}
+.opcion:has(input:checked){border-color:var(--rojo-vivo);background:linear-gradient(90deg,rgba(227,22,42,.16),rgba(227,22,42,.04))}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding:14px 13px;border-top:3px double var(--borde-2);font-weight:800;font-size:1.15rem;color:var(--plata)}
+.horario{display:grid;gap:10px}
+.dia{display:grid;grid-template-columns:7.5rem 1fr 1fr;gap:8px;align-items:center}
+.dia .nombre-dia{font-weight:600;color:var(--plata)}
+.dia label.cerrado{grid-column:2 / -1;display:flex;gap:8px;align-items:center;font-weight:400;color:var(--texto-2);margin:0}
+.dia.esta-cerrado select{display:none}
+.archivos input[type=file]{width:100%;padding:12px;border:1px dashed var(--borde-2);border-radius:8px;background:var(--campo);color:var(--texto-2);font:inherit;font-size:15px}
+.archivos input[type=file]::file-selector-button{margin-right:12px;padding:9px 14px;border:0;border-radius:6px;cursor:pointer;
+  font:inherit;font-weight:600;color:#fff;background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%)}
+.miniaturas{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.miniaturas img{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--borde)}
+.paso-acceso{padding:14px;border:1px solid var(--borde);border-radius:8px;background:var(--campo);margin-top:10px}
+.paso-acceso h3{margin:0 0 6px;font-size:1.02rem;color:var(--plata);font-weight:700;font-stretch:92%}
+.paso-acceso p,.paso-acceso ol{margin:0 0 8px;color:var(--texto-2);font-size:.97rem}
+.paso-acceso ol{padding-left:20px}
+.paso-acceso code{font-family:inherit;color:var(--plata);font-weight:700;word-break:break-all}
+.autorizacion{padding:14px;border:1px solid rgba(255,74,90,.45);background:rgba(227,22,42,.08);border-radius:8px;color:var(--texto)}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:54px;margin-top:28px;border:0;border-radius:8px;cursor:pointer;
+  font:inherit;font-weight:700;font-size:1.08rem;color:#fff;background:linear-gradient(180deg,#e02a3d 0%,#c51126 50%,#8a0715 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 10px 26px -10px rgba(227,22,42,.95);transition:transform 160ms var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.btn-sec{background:none;border:1px solid var(--borde-2);box-shadow:none;color:var(--plata);font-weight:600;min-height:48px;margin-top:12px}
+.estado{margin-top:12px;color:var(--texto-2);text-align:center;min-height:1.5em}
+.listo{display:none;text-align:center;padding:40px 0}
+.listo h2{font-family:"Michroma",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:var(--plata);font-size:1.2rem}
+.listo p{color:var(--texto-2)}
+.oculto{display:none!important}
+@media (max-width:420px){.dia{grid-template-columns:1fr 1fr}.dia .nombre-dia{grid-column:1 / -1}.dia label.cerrado{grid-column:1 / -1}}
+</style>
+</head>
+<body>
+<main class="hoja">
+  <header class="cabecera">
+    <img src="../img/simbolo.webp" width="400" height="736" alt="Jota Digital">
+    <h1>Ficha de tu negocio</h1>
+    <p class="intro">Con esto preparo todo lo de tu negocio en internet. Te toma unos 5 minutos y no te pido ninguna contraseña.</p>
+  </header>
+
+  <form id="ficha" novalidate>
+    <fieldset>
+      <legend>Tu negocio</legend>
+      <div class="campo" data-req><label for="nombre">Nombre del negocio</label><input id="nombre" name="nombre" type="text" autocomplete="organization" placeholder="Como quieres que aparezca en Google"><span class="msg-error">Escribe el nombre del negocio.</span></div>
+      <div class="campo" data-req><label for="rubro">¿A qué se dedica?</label><input id="rubro" name="rubro" type="text" placeholder="Peluquería, almacén, taller mecánico…"><span class="msg-error">Cuéntame el rubro.</span></div>
+      <div class="campo" data-req><label for="descripcion">Descríbelo en dos o tres frases</label><textarea id="descripcion" name="descripcion" maxlength="600" placeholder="Qué haces, para quién y qué te hace distinto."></textarea><span class="msg-error">Escribe una descripción corta.</span></div>
+      <div class="campo" data-req><label for="servicios_productos">Productos o servicios, con precio si quieres</label><textarea id="servicios_productos" name="servicios_productos" placeholder="Uno por línea, por ejemplo:&#10;Corte de pelo — $8.000&#10;Tinte — desde $25.000"></textarea><span class="msg-error">Escribe al menos uno.</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contacto</legend>
+      <div class="campo" data-req><label for="contacto_nombre">Tu nombre</label><input id="contacto_nombre" name="contacto_nombre" type="text" autocomplete="name"><span class="msg-error">Escribe tu nombre.</span></div>
+      <div class="campo"><label for="contacto_cargo">Tu cargo <span class="opcional">(opcional)</span></label><input id="contacto_cargo" name="contacto_cargo" type="text" placeholder="Dueño, administradora…"></div>
+      <div class="campo" data-req data-tipo="celular"><label for="whatsapp">WhatsApp del negocio</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678"><span class="msg-error">Escribe un celular chileno, por ejemplo +56 9 1234 5678.</span></div>
+      <div class="campo" data-req data-tipo="correo"><label for="correo">Correo del negocio</label><input id="correo" name="correo" type="email" inputmode="email" autocomplete="email"><span class="msg-error">Revisa el correo.</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dónde y cuándo atiendes</legend>
+      <div class="campo"><span class="etiqueta">¿Cómo atiendes?</span>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="atencion" value="local" checked> En mi local, con dirección</label>
+          <label class="opcion"><input type="radio" name="atencion" value="domicilio"> Voy donde el cliente, sin local</label>
+          <label class="opcion"><input type="radio" name="atencion" value="ambas"> Las dos</label>
+        </div>
+      </div>
+      <div class="campo" data-req data-si="local"><label for="direccion">Dirección del local</label><input id="direccion" name="direccion" type="text" autocomplete="street-address" placeholder="Calle y número"><span class="msg-error">Escribe la dirección.</span></div>
+      <div class="campo" data-req><label for="comuna">Comuna</label><input id="comuna" name="comuna" type="text" autocomplete="address-level2"><span class="msg-error">Escribe la comuna.</span></div>
+      <div class="campo"><label for="region">Región</label><select id="region" name="region"></select></div>
+      <div class="campo" data-si="domicilio"><label for="zonas">¿A qué zonas vas? <span class="opcional">(opcional)</span></label><input id="zonas" name="zonas" type="text" placeholder="Providencia, Ñuñoa, Las Condes…"></div>
+      <div class="campo"><span class="etiqueta">Horario</span><div class="horario" id="horario"></div>
+        <input id="horario_nota" name="horario_nota" type="text" placeholder="Nota opcional: cerramos a colación de 14:00 a 15:00…" style="margin-top:10px"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lo que ya tienes</legend>
+      <p class="ayuda-bloque">Si no tienes alguna, déjala en blanco.</p>
+      <div class="campo"><label for="instagram">Instagram <span class="opcional">(opcional)</span></label><input id="instagram" name="instagram" type="text" placeholder="@tunegocio"></div>
+      <div class="campo"><label for="facebook">Facebook <span class="opcional">(opcional)</span></label><input id="facebook" name="facebook" type="text" placeholder="Link o nombre de la página"></div>
+      <div class="campo"><label for="web_actual">Página web <span class="opcional">(opcional)</span></label><input id="web_actual" name="web_actual" type="text" inputmode="url" placeholder="tunegocio.cl"></div>
+      <div class="campo"><span class="etiqueta">¿Tu negocio ya aparece en Google Maps?</span>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="en_google" value="si"> Sí</label>
+          <label class="opcion"><input type="radio" name="en_google" value="no"> No</label>
+          <label class="opcion"><input type="radio" name="en_google" value="no_se" checked> No sé</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lo que contrataste</legend>
+      <p class="ayuda-bloque">Marca lo que conversaste con Joaquín.</p>
+      <div class="campo"><span class="etiqueta">Pack</span><div class="opciones" id="packs"></div></div>
+      <div class="campo"><span class="etiqueta">Servicios</span><div class="opciones" id="servicios"></div></div>
+      <div class="total"><span>Total</span><span id="total">$0</span></div>
+      <div class="campo" data-req data-id="contrato"><span class="msg-error">Marca al menos un pack o un servicio.</span></div>
+      <div class="campo oculto" id="bloque-nfc"><label for="nfc_destino">¿A dónde lleva el sticker NFC?</label>
+        <select id="nfc_destino" name="nfc_destino"><option value="resenas">A dejar una reseña en Google</option><option value="whatsapp">A escribirme por WhatsApp</option><option value="instagram">A mi Instagram</option></select></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Logo y fotos</legend>
+      <p class="ayuda-bloque">Fotos reales: tu local por fuera y por dentro, tus productos, tu equipo. Se achican solas antes de enviarse.</p>
+      <div class="campo archivos"><label for="logo">Logo <span class="opcional">(si tienes)</span></label><input id="logo" type="file" accept="image/*"><div class="miniaturas" id="mini-logo"></div></div>
+      <div class="campo archivos"><label for="fotos">Fotos <span class="opcional">(hasta 10)</span></label><input id="fotos" type="file" accept="image/*" multiple><div class="miniaturas" id="mini-fotos"></div></div>
+    </fieldset>
+
+    <fieldset id="bloque-accesos">
+      <legend>Accesos, sin contraseñas</legend>
+      <p class="ayuda-bloque">No me das tus claves: me invitas como administrador y puedes quitarme cuando quieras.</p>
+      <div id="accesos"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Autorización</legend>
+      <div class="autorizacion">
+        <p style="margin:0 0 12px">Autorizo a Joaquín Tapia (Jota Digital) a crear, configurar y publicar en las cuentas de mi negocio los servicios marcados en esta ficha, usando los datos y fotos que entrego. Puedo quitarle el acceso cuando quiera.</p>
+        <div class="campo" data-req><label for="autoriza_nombre">Nombre de quien autoriza</label><input id="autoriza_nombre" name="autoriza_nombre" type="text" autocomplete="name"><span class="msg-error">Escribe tu nombre.</span></div>
+        <div class="campo" data-req data-tipo="rut"><label for="autoriza_rut">RUT</label><input id="autoriza_rut" name="autoriza_rut" type="text" placeholder="12.345.678-9"><span class="msg-error">Revisa el RUT.</span></div>
+        <div class="campo" data-req data-tipo="check"><label class="opcion" style="margin-top:12px"><input type="checkbox" id="autoriza" name="autoriza"> Sí, autorizo</label><span class="msg-error">Falta marcar la autorización.</span></div>
+      </div>
+    </fieldset>
+
+    <button class="btn" type="submit" id="enviar">Enviar ficha</button>
+    <p class="estado" id="estado" role="status" aria-live="polite"></p>
+  </form>
+
+  <section class="listo" id="listo" aria-live="polite">
+    <h2>¡Ficha enviada!</h2>
+    <p id="listo-texto">Joaquín ya la tiene y te escribe por WhatsApp para seguir.</p>
+    <button class="btn btn-sec" type="button" id="por-whatsapp">Enviar también por WhatsApp</button>
+    <button class="btn btn-sec" type="button" id="descargar">Guardar una copia</button>
+  </section>
+</main>
+
+<script>
+const CAT = {"basicos": [{"id": "nfc", "nombre": "Sticker NFC", "precio": 10000, "bajada": "Tu cliente acerca el celular y llega directo a dejarte una reseña o a escribirte.", "incluye": ["Sticker NFC programado y pegado en tu mesón o tu caja.", "Lleva a tus reseñas de Google, a tu WhatsApp o a tu Instagram.", "Probado con Android y con iPhone."]}, {"id": "whatsapp", "nombre": "WhatsApp Business", "precio": 35000, "bajada": "Tu WhatsApp ordenado como el de una tienda grande.", "incluye": ["Paso a WhatsApp Business sin perder tus chats.", "Perfil con logo, horario, dirección y descripción.", "Catálogo con hasta 15 productos o servicios.", "Mensaje de bienvenida y mensaje de ausencia.", "10 respuestas rápidas para lo que más te preguntan.", "Etiquetas para ordenar a tus clientes.", "Link y QR directo a tu chat."]}, {"id": "maps", "nombre": "Google Maps", "precio": 45000, "bajada": "Que tu negocio aparezca bien cuando te buscan.", "incluye": ["Creo tu ficha de Google o recupero la que ya existe.", "Dirección, horario, teléfono, categoría y servicios al día.", "Hasta 10 fotos de tu local y tus productos.", "Link directo para pedir reseñas.", "Te acompaño en la verificación que pide Google."], "nota": "La verificación la aprueba Google y a veces tarda unos días."}, {"id": "facebook", "nombre": "Facebook", "precio": 30000, "bajada": "Una página de negocio completa y conectada.", "incluye": ["Página creada o puesta al día.", "Foto de perfil, portada, datos y horario.", "Botón para que te escriban por WhatsApp.", "Conectada con Instagram en Meta Business Suite.", "3 publicaciones de inicio."]}, {"id": "instagram", "nombre": "Instagram", "precio": 35000, "bajada": "Un perfil que da ganas de comprarte.", "incluye": ["Cuenta profesional configurada.", "Biografía clara con link a tu WhatsApp.", "Portadas para tus historias destacadas.", "3 publicaciones base: quiénes somos, qué ofrecemos y cómo contactarnos.", "Plantillas para que sigas publicando tú."], "nota": "No incluye manejo semanal de la cuenta."}], "avanzados": [{"id": "web", "nombre": "Página web", "desde": true, "precio": 150000, "bajada": "Tu propia página, lista para compartir.", "incluye": ["Una página adaptada a celular con tus servicios, fotos y ubicación.", "Botón directo a tu WhatsApp.", "La publico y te la dejo funcionando, sin mensualidad de alojamiento.", "Una ronda de cambios incluida."], "nota": "No incluye el dominio (tunegocio.cl). Lo pagas tú directo: un .cl cuesta $9.990 al año en NIC Chile.", "notaFuerte": true}, {"id": "automatizacion", "nombre": "Automatización de procesos en línea", "desde": true, "precio": 150000, "bajada": "Lo repetitivo se hace solo.", "incluye": ["Reviso tu proceso y elijo qué conviene automatizar.", "Por ejemplo: pedidos que se anotan solos en una planilla, avisos por correo o WhatsApp, recordatorios de horas.", "Lo armo con n8n o Make y lo dejo probado.", "Te explico cómo funciona y qué hacer si algo falla."], "nota": "Si la plataforma cobra licencia, la pagas tú directo."}, {"id": "bot-informes", "nombre": "Bot de informes y avisos", "desde": true, "precio": 90000, "bajada": "Sin IA: te informa y te avisa solo, todos los días.", "incluye": ["Por ejemplo: el resumen de tus ventas del día, recordatorios de horas a tus clientes o un aviso cuando algo se está acabando.", "Toma los datos de tu planilla, tu caja o tu correo.", "Te llega por WhatsApp, Telegram o correo, a la hora que elijas.", "Queda funcionando en la nube, sin un computador prendido ni mensualidad de alojamiento."], "nota": "Gratis si te llega por Telegram o correo. Por WhatsApp, Meta cobra cerca de $20 por cada aviso."}, {"id": "bot", "nombre": "Bot con IA", "desde": true, "precio": 180000, "bajada": "Conversa con tus clientes por WhatsApp, a cualquier hora.", "incluye": ["Responde con la información de tu negocio: horario, precios, dirección, stock y cómo comprar.", "Te pasa la conversación cuando hace falta una persona.", "Usa la API oficial de WhatsApp, la vía que Meta permite para bots, con un número propio para el bot.", "Queda alojado en la nube, sin servidor en tu local ni mensualidad de alojamiento.", "Un mes de ajustes incluido."], "nota": "Gratis: el alojamiento y las primeras 1.000 respuestas de WhatsApp de cada mes. Sobre las 1.000, WhatsApp cobra cerca de $20 por respuesta. Si el bot usa ChatGPT o Claude, se suma un cargo aparte de $10.000 para la API."}], "packs": [{"id": "local", "nombre": "Pack Local", "bajada": "Te encuentran en Maps y te escriben por WhatsApp.", "trae": ["maps", "whatsapp"], "precio": 70000, "imagen": "pack-local"}, {"id": "redes", "nombre": "Pack Redes", "bajada": "Facebook e Instagram listos y conectados.", "trae": ["facebook", "instagram"], "precio": 55000, "imagen": "pack-redes"}, {"id": "full", "nombre": "Pack Full", "bajada": "Maps, WhatsApp, Facebook e Instagram, de una vez.", "trae": ["maps", "whatsapp", "facebook", "instagram"], "precio": 130000, "imagen": "pack-full"}, {"id": "fullweb", "nombre": "Pack Full + Web", "bajada": "Todo lo anterior y tu propia página.", "trae": ["maps", "whatsapp", "facebook", "instagram", "web"], "precio": 260000, "imagen": "pack-full-web"}], "whatsapp": "56972989596", "ficha": {"endpoint": "", "acceso_google": "joagivg.tapiens@gmail.com", "meta_socio_id": "", "drive_carpeta_id": "1CEqt1eE5equOHpFGkHbh1tO5v_eUXVK3"}};
+const $ = s => document.querySelector(s);
+const plata = n => "$" + n.toLocaleString("es-CL");
+const nombreServ = id => (CAT.basicos.concat(CAT.avanzados).find(s => s.id === id) || {}).nombre || id;
+
+// regiones
+const REGIONES = ["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Región Metropolitana","O'Higgins","Maule","Ñuble","Biobío","La Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"];
+$("#region").innerHTML = REGIONES.map(r => `<option${r === "Región Metropolitana" ? " selected" : ""}>${r}</option>`).join("");
+
+// horario
+const HORAS = []; for (let h = 6; h <= 23; h++) for (const m of ["00","30"]) HORAS.push(`${String(h).padStart(2,"0")}:${m}`);
+const DIAS = [["lv","Lunes a viernes","09:00","19:00"],["sab","Sábado","10:00","14:00"],["dom","Domingo",null,null]];
+$("#horario").innerHTML = DIAS.map(([id, nom, a, c]) => `
+  <div class="dia${a ? "" : " esta-cerrado"}" data-dia="${id}">
+    <span class="nombre-dia">${nom}</span>
+    <select aria-label="${nom}: abre">${HORAS.map(h => `<option${h === (a || "09:00") ? " selected" : ""}>${h}</option>`).join("")}</select>
+    <select aria-label="${nom}: cierra">${HORAS.map(h => `<option${h === (c || "18:00") ? " selected" : ""}>${h}</option>`).join("")}</select>
+    <label class="cerrado"><input type="checkbox"${a ? "" : " checked"}> Cerrado</label>
+  </div>`).join("");
+document.querySelectorAll(".dia").forEach(d => d.querySelector("input").addEventListener("change", e => d.classList.toggle("esta-cerrado", e.target.checked)));
+
+// atención: muestra dirección o zonas
+function verAtencion() {
+  const v = document.querySelector("input[name=atencion]:checked").value;
+  document.querySelector("[data-si=local]").classList.toggle("oculto", v === "domicilio");
+  document.querySelector("[data-si=domicilio]").classList.toggle("oculto", v === "local");
+}
+document.querySelectorAll("input[name=atencion]").forEach(r => r.addEventListener("change", verAtencion)); verAtencion();
+
+// packs y servicios
+$("#packs").innerHTML = `<label class="opcion"><input type="radio" name="pack" value="" checked> Ninguno</label>` + CAT.packs.map(p =>
+  `<label class="opcion"><input type="radio" name="pack" value="${p.id}"> <span>${p.nombre}<small>${p.trae.map(nombreServ).join(" + ")}</small></span><span class="precio">${plata(p.precio)}</span></label>`).join("");
+$("#servicios").innerHTML = CAT.basicos.concat(CAT.avanzados).map(s =>
+  `<label class="opcion" data-serv="${s.id}"><input type="checkbox" name="servicio" value="${s.id}"> <span>${s.nombre}</span><span class="precio">${s.desde ? "desde " : ""}${plata(s.precio)}</span></label>`).join("");
+
+function contrato() {
+  const pack = CAT.packs.find(p => p.id === document.querySelector("input[name=pack]:checked").value) || null;
+  const incluidos = pack ? pack.trae : [];
+  const extra = [...document.querySelectorAll("input[name=servicio]:checked")].map(i => i.value).filter(id => !incluidos.includes(id));
+  let total = pack ? pack.precio : 0, desde = false;
+  extra.forEach(id => { const s = CAT.basicos.concat(CAT.avanzados).find(x => x.id === id); total += s.precio; if (s.desde) desde = true; });
+  return { pack: pack ? pack.id : null, pack_nombre: pack ? pack.nombre : null, servicios: incluidos.concat(extra), extra, total, desde };
+}
+function verContrato() {
+  const pack = CAT.packs.find(p => p.id === document.querySelector("input[name=pack]:checked").value);
+  document.querySelectorAll("[data-serv]").forEach(l => {
+    const inc = pack && pack.trae.includes(l.dataset.serv), cb = l.querySelector("input");
+    l.classList.toggle("incluido", !!inc); cb.disabled = !!inc; if (inc) cb.checked = true;
+  });
+  const c = contrato();
+  $("#total").textContent = (c.desde ? "desde " : "") + plata(c.total);
+  $("#bloque-nfc").classList.toggle("oculto", !c.servicios.includes("nfc"));
+  verAccesos(c.servicios);
+}
+document.querySelectorAll("input[name=pack], input[name=servicio]").forEach(i => i.addEventListener("change", e => {
+  if (e.target.name === "pack") document.querySelectorAll("input[name=servicio]").forEach(cb => { if (cb.disabled) cb.checked = false; });
+  verContrato();
+}));
+// preselección por link: ?pack=full&s=nfc,web
+const q = new URLSearchParams(location.search);
+if (q.get("pack")) { const r = document.querySelector(`input[name=pack][value="${CSS.escape(q.get("pack"))}"]`); if (r) r.checked = true; }
+(q.get("s") || "").split(",").filter(Boolean).forEach(id => { const cb = document.querySelector(`input[name=servicio][value="${CSS.escape(id)}"]`); if (cb) cb.checked = true; });
+
+// accesos según lo contratado
+function verAccesos(servs) {
+  const g = CAT.ficha.acceso_google, m = CAT.ficha.meta_socio_id, b = [];
+  if (servs.includes("maps")) b.push(`<div class="paso-acceso"><h3>Google Maps</h3>
+    <p>Si tu negocio ya aparece en Google, invítame como administrador:</p>
+    <ol><li>Busca tu negocio en Google con tu cuenta abierta y toca <b>Editar perfil</b>.</li><li>Entra a <b>Configuración</b> y luego a <b>Personas y acceso</b>.</li><li>Toca <b>Agregar</b>, escribe <code>${g}</code> y elige <b>Administrador</b>.</li></ol>
+    <p>Si todavía no aparece, la creamos juntos.</p>
+    <label class="opcion"><input type="checkbox" name="acceso_google"> Ya lo invité</label></div>`);
+  if (servs.includes("facebook") || servs.includes("instagram")) b.push(`<div class="paso-acceso"><h3>Facebook e Instagram</h3>
+    ${m ? `<p>Si ya tienes página, agrégame como socio:</p><ol><li>Entra a <b>Meta Business Suite</b> y abre <b>Configuración</b>.</li><li>En <b>Socios</b>, toca <b>Agregar</b> y escribe el ID <code>${m}</code>.</li><li>Dame acceso a tu página y a tu Instagram.</li></ol><label class="opcion"><input type="checkbox" name="acceso_meta"> Ya lo agregué</label>`
+         : `<p>Lo dejamos conectado juntos, en dos minutos, cuando conversemos.</p>`}</div>`);
+  if (servs.includes("whatsapp")) b.push(`<div class="paso-acceso"><h3>WhatsApp Business</h3><p>Se configura en tu celular. Lo hacemos juntos en unos 15 minutos; no pierdes tus chats.</p></div>`);
+  if (servs.includes("web")) b.push(`<div class="paso-acceso"><h3>Página web</h3><p>¿Ya tienes un dominio (tunegocio.cl)?</p>
+    <div class="opciones"><label class="opcion"><input type="radio" name="dominio" value="si"> Sí</label><label class="opcion"><input type="radio" name="dominio" value="no" checked> No, ayúdame a comprarlo a mi nombre</label></div></div>`);
+  $("#accesos").innerHTML = b.join("");
+  $("#bloque-accesos").classList.toggle("oculto", !b.length);
+}
+verContrato();
+
+// archivos: se achican antes de enviar
+const archivos = { logo: [], fotos: [] };
+function achicar(file, max, tipo) {
+  return new Promise((ok, mal) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const k = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement("canvas"); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      ok({ nombre: file.name.replace(/\.[^.]+$/, "") + (tipo === "image/png" ? ".png" : ".jpg"), tipo, base64: c.toDataURL(tipo, .86).split(",")[1] });
+    };
+    img.onerror = () => mal(new Error("No pude leer " + file.name)); img.src = url;
+  });
+}
+async function cargar(input, clave, max, cuantos, mini) {
+  const fs = [...input.files].slice(0, cuantos); archivos[clave] = []; $(mini).innerHTML = "";
+  for (const f of fs) {
+    const tipo = clave === "logo" && f.type === "image/png" ? "image/png" : "image/jpeg";
+    try { const a = await achicar(f, max, tipo); archivos[clave].push(a);
+      $(mini).insertAdjacentHTML("beforeend", `<img alt="" src="data:${a.tipo};base64,${a.base64}">`); } catch (e) { alert(e.message); }
+  }
+}
+$("#logo").addEventListener("change", e => cargar(e.target, "logo", 1200, 1, "#mini-logo"));
+$("#fotos").addEventListener("change", e => cargar(e.target, "fotos", 1600, 10, "#mini-fotos"));
+
+// validación
+function rutValido(r) {
+  const s = r.replace(/[^0-9kK]/g, "").toUpperCase(); if (s.length < 8) return false;
+  const cuerpo = s.slice(0, -1), dv = s.slice(-1); let suma = 0, m = 2;
+  for (let i = cuerpo.length - 1; i >= 0; i--) { suma += +cuerpo[i] * m; m = m === 7 ? 2 : m + 1; }
+  const res = 11 - (suma % 11); return dv === (res === 11 ? "0" : res === 10 ? "K" : String(res));
+}
+function celular(v) { const d = v.replace(/\D/g, "").replace(/^56/, ""); return /^9\d{8}$/.test(d) ? "+56 " + d[0] + " " + d.slice(1, 5) + " " + d.slice(5) : null; }
+function validar() {
+  let primero = null;
+  document.querySelectorAll("[data-req]").forEach(c => {
+    if (c.closest(".oculto")) { c.classList.remove("error"); return; }
+    let ok = true; const inp = c.querySelector("input,textarea,select"), tipo = c.dataset.tipo;
+    if (c.dataset.id === "contrato") ok = contrato().servicios.length > 0;
+    else if (tipo === "check") ok = inp.checked;
+    else if (tipo === "celular") ok = !!celular(inp.value);
+    else if (tipo === "correo") ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(inp.value.trim());
+    else if (tipo === "rut") ok = rutValido(inp.value);
+    else ok = inp.value.trim().length > 1;
+    c.classList.toggle("error", !ok); if (!ok && !primero) primero = c;
+  });
+  if (primero) primero.scrollIntoView({ behavior: "smooth", block: "center" });
+  return !primero;
+}
+
+function armarFicha() {
+  const v = id => ($("#" + id) ? $("#" + id).value.trim() : "");
+  const horario = [...document.querySelectorAll(".dia")].map(d => {
+    const [a, c] = d.querySelectorAll("select"), cerrado = d.querySelector("input").checked;
+    return { dia: d.querySelector(".nombre-dia").textContent, cerrado, abre: cerrado ? null : a.value, cierra: cerrado ? null : c.value };
+  });
+  const sel = n => (document.querySelector(`input[name=${n}]:checked`) || {}).value || null;
+  const c = contrato();
+  return {
+    version: 1, enviada: new Date().toISOString(),
+    negocio: { nombre: v("nombre"), rubro: v("rubro"), descripcion: v("descripcion"), servicios_productos: v("servicios_productos"),
+      atencion: sel("atencion"), direccion: v("direccion"), comuna: v("comuna"), region: v("region"), zonas: v("zonas"),
+      horario, horario_nota: v("horario_nota"), instagram: v("instagram"), facebook: v("facebook"), web_actual: v("web_actual"), en_google: sel("en_google") },
+    contacto: { nombre: v("contacto_nombre"), cargo: v("contacto_cargo"), whatsapp: celular(v("whatsapp")), correo: v("correo") },
+    contrato: { ...c, servicios_nombres: c.servicios.map(nombreServ), nfc_destino: c.servicios.includes("nfc") ? v("nfc_destino") : null },
+    accesos: { google_invitado: !!document.querySelector("input[name=acceso_google]:checked"), meta_socio: !!document.querySelector("input[name=acceso_meta]:checked"), dominio_propio: sel("dominio") },
+    autorizacion: { nombre: v("autoriza_nombre"), rut: v("autoriza_rut"), acepta: $("#autoriza").checked, texto: document.querySelector(".autorizacion p").textContent.trim() },
+    archivos: { logo: archivos.logo.map(a => a.nombre), fotos: archivos.fotos.map(a => a.nombre) }
+  };
+}
+function resumen(f) {
+  const h = f.negocio.horario.map(d => `${d.dia}: ${d.cerrado ? "cerrado" : d.abre + " a " + d.cierra}`).join(" · ");
+  return [`FICHA JOTA DIGITAL`, `Negocio: ${f.negocio.nombre}`, `Rubro: ${f.negocio.rubro}`, `Descripción: ${f.negocio.descripcion}`,
+    `Productos o servicios: ${f.negocio.servicios_productos.replace(/\n/g, " | ")}`, `Contacto: ${f.contacto.nombre}${f.contacto.cargo ? " (" + f.contacto.cargo + ")" : ""}`,
+    `WhatsApp: ${f.contacto.whatsapp}`, `Correo: ${f.contacto.correo}`, `Atención: ${f.negocio.atencion}`,
+    `Dirección: ${f.negocio.direccion || "-"}, ${f.negocio.comuna}, ${f.negocio.region}`, `Zonas: ${f.negocio.zonas || "-"}`,
+    `Horario: ${h}${f.negocio.horario_nota ? " (" + f.negocio.horario_nota + ")" : ""}`,
+    `Instagram: ${f.negocio.instagram || "-"}`, `Facebook: ${f.negocio.facebook || "-"}`, `Web: ${f.negocio.web_actual || "-"}`, `En Google Maps: ${f.negocio.en_google}`,
+    `Contrató: ${f.contrato.pack_nombre ? f.contrato.pack_nombre + " + " : ""}${f.contrato.extra.map(nombreServ).join(", ") || ""} — total ${f.contrato.desde ? "desde " : ""}${plata(f.contrato.total)}`,
+    `Autoriza: ${f.autorizacion.nombre}, RUT ${f.autorizacion.rut}`, `Fotos: ${f.archivos.fotos.length}, logo: ${f.archivos.logo.length ? "sí" : "no"}`].join("\n");
+}
+
+// borrador local, por si se cierra la página
+const CLAVE = "jd-ficha-borrador";
+try { const b = JSON.parse(localStorage.getItem(CLAVE) || "{}"); Object.entries(b).forEach(([id, val]) => { const el = document.getElementById(id); if (el && "value" in el && el.type !== "file") el.value = val; }); } catch (e) {}
+$("#ficha").addEventListener("input", () => { try { const o = {}; document.querySelectorAll("#ficha input[id], #ficha textarea[id]").forEach(el => { if (el.type !== "file" && el.type !== "checkbox") o[el.id] = el.value; }); localStorage.setItem(CLAVE, JSON.stringify(o)); } catch (e) {} });
+
+let ultima = null;
+async function porWhatsApp(f) {
+  const texto = resumen(f), fotos = archivos.logo.concat(archivos.fotos).map(a => new File([Uint8Array.from(atob(a.base64), ch => ch.charCodeAt(0))], a.nombre, { type: a.tipo }));
+  if (fotos.length && navigator.canShare && navigator.canShare({ files: fotos })) { try { await navigator.share({ text: texto, files: fotos }); return; } catch (e) { if (e.name === "AbortError") return; } }
+  location.href = `https://wa.me/${CAT.whatsapp}?text=` + encodeURIComponent(texto + (fotos.length ? "\n\n(Te mando el logo y las fotos aparte.)" : ""));
+}
+$("#ficha").addEventListener("submit", async e => {
+  e.preventDefault(); if (!validar()) return;
+  const f = ultima = armarFicha(), boton = $("#enviar");
+  if (!CAT.ficha.endpoint) { await porWhatsApp(f); mostrarListo(false); return; }
+  boton.disabled = true; $("#estado").textContent = "Enviando ficha y fotos…";
+  try {
+    await fetch(CAT.ficha.endpoint, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ ficha: f, resumen: resumen(f), logo: archivos.logo, fotos: archivos.fotos }) });
+    try { localStorage.removeItem(CLAVE); } catch (e) {}
+    mostrarListo(true);
+  } catch (err) {
+    boton.disabled = false; $("#estado").textContent = "No se pudo enviar. Revisa tu internet o envíala por WhatsApp.";
+    await porWhatsApp(f); mostrarListo(false);
+  }
+});
+function mostrarListo(enLinea) {
+  $("#ficha").classList.add("oculto"); $("#listo").style.display = "block"; window.scrollTo(0, 0);
+  if (!enLinea) $("#listo-texto").textContent = "Si se abrió WhatsApp, envíale el mensaje a Joaquín. Si no, usa el botón de abajo.";
+}
+$("#por-whatsapp").addEventListener("click", () => ultima && porWhatsApp(ultima));
+$("#descargar").addEventListener("click", () => {
+  if (!ultima) return; const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(ultima, null, 2)], { type: "application/json" }));
+  a.download = "ficha-" + (ultima.negocio.nombre || "negocio").toLowerCase().replace(/[^a-z0-9]+/g, "-") + ".json"; a.click();
+});
+</script>
+</body>
+</html>
